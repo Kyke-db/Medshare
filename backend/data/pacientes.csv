@@ -1,0 +1,351 @@
+paciente,fecha,peso,presion_sis,presion_dia,micciones,creatinina,sintomas,riesgo
+PAC-001,2026-10-10,63.2,114,79,7,0.85,,Bajo
+PAC-001,2026-10-11,62.3,135,81,3,0.76,,Bajo
+PAC-001,2026-10-12,62.4,122,88,8,0.79,Hinchazón;Dificultad respiratoria,Bajo
+PAC-001,2026-10-13,62.9,133,69,4,0.84,,Bajo
+PAC-001,2026-10-14,62.6,117,85,3,0.76,,Bajo
+PAC-001,2026-10-15,62.4,144,88,4,0.84,,Bajo
+PAC-001,2026-10-16,62.9,121,83,8,0.81,,Bajo
+PAC-001,2026-10-17,62.9,137,79,5,0.83,Poca orina,Bajo
+PAC-001,2026-10-18,63.1,123,70,7,0.79,,Bajo
+PAC-001,2026-10-19,62.6,112,71,7,0.8,Fatiga extrema;Poca orina,Bajo
+PAC-001,2026-10-20,63.3,134,69,8,0.82,Náuseas,Bajo
+PAC-001,2026-10-21,63.1,139,86,6,0.76,Fatiga extrema,Bajo
+PAC-001,2026-10-22,63.4,138,90,8,0.76,,Bajo
+PAC-001,2026-10-23,62.9,136,77,8,0.76,Mareos,Bajo
+PAC-001,2026-10-24,63.4,130,73,7,0.81,Hinchazón,Bajo
+PAC-001,2026-10-25,62.5,126,72,8,0.77,,Bajo
+PAC-001,2026-10-26,62.4,133,85,5,0.79,Poca orina;Hinchazón,Bajo
+PAC-001,2026-10-27,63.1,130,89,6,0.89,Dificultad respiratoria;Fatiga extrema,Bajo
+PAC-001,2026-10-28,62.3,117,75,8,0.9,,Bajo
+PAC-001,2026-10-29,62.5,108,72,6,0.79,Dificultad respiratoria;Náuseas,Bajo
+PAC-001,2026-10-30,63.1,140,87,8,0.84,Náuseas,Bajo
+PAC-001,2026-10-31,62.8,143,80,6,0.86,,Bajo
+PAC-001,2026-11-01,62.8,133,69,4,0.81,,Bajo
+PAC-001,2026-11-02,62.8,115,78,7,0.76,,Bajo
+PAC-001,2026-11-03,62.9,142,71,5,0.76,,Bajo
+PAC-001,2026-11-04,63.3,132,72,8,0.85,,Bajo
+PAC-001,2026-11-05,62.7,115,71,6,0.79,Dificultad respiratoria,Bajo
+PAC-001,2026-11-06,62.6,117,71,8,0.91,Poca orina;Mareos,Bajo
+PAC-001,2026-11-07,63.2,118,84,3,0.8,Poca orina,Bajo
+PAC-001,2026-11-08,63.1,109,92,7,0.78,Náuseas,Bajo
+PAC-002,2026-10-10,78.4,118,79,4,0.75,Dificultad respiratoria,Bajo
+PAC-002,2026-10-11,78.2,120,75,6,0.82,Mareos,Bajo
+PAC-002,2026-10-12,78.2,139,79,8,0.86,,Bajo
+PAC-002,2026-10-13,78.9,138,76,4,0.74,,Bajo
+PAC-002,2026-10-14,78.9,130,79,3,0.85,Poca orina,Bajo
+PAC-002,2026-10-15,78.5,129,74,6,0.77,,Bajo
+PAC-002,2026-10-16,78.5,130,88,3,0.84,,Bajo
+PAC-002,2026-10-17,79.1,120,83,4,0.87,,Bajo
+PAC-002,2026-10-18,78.9,133,82,6,0.81,Hinchazón,Bajo
+PAC-002,2026-10-19,78.8,118,72,3,0.86,,Bajo
+PAC-002,2026-10-20,78.7,138,89,5,0.76,Mareos;Náuseas,Bajo
+PAC-002,2026-10-21,78.0,114,84,8,0.76,,Bajo
+PAC-002,2026-10-22,78.0,121,77,7,0.89,Náuseas;Mareos,Bajo
+PAC-002,2026-10-23,78.6,116,69,8,0.78,Fatiga extrema,Bajo
+PAC-002,2026-10-24,79.0,141,81,7,0.8,Mareos;Dificultad respiratoria,Bajo
+PAC-002,2026-10-25,78.6,109,82,4,0.76,,Bajo
+PAC-002,2026-10-26,78.2,138,87,8,0.84,,Bajo
+PAC-002,2026-10-27,78.4,141,84,7,0.76,,Bajo
+PAC-002,2026-10-28,79.0,111,75,4,0.82,,Bajo
+PAC-002,2026-10-29,78.6,143,68,3,0.78,,Bajo
+PAC-002,2026-10-30,78.8,136,84,7,0.81,,Bajo
+PAC-002,2026-10-31,78.8,124,85,4,0.87,,Bajo
+PAC-002,2026-11-01,78.5,133,82,5,0.87,,Bajo
+PAC-002,2026-11-02,78.5,121,89,5,0.75,,Bajo
+PAC-002,2026-11-03,79.1,131,72,5,0.86,,Bajo
+PAC-002,2026-11-04,78.5,139,73,8,0.88,Náuseas;Hinchazón,Bajo
+PAC-002,2026-11-05,78.8,140,80,5,0.87,,Bajo
+PAC-002,2026-11-06,78.1,131,68,5,0.81,Fatiga extrema,Bajo
+PAC-002,2026-11-07,78.4,141,87,5,0.83,Mareos;Hinchazón,Bajo
+PAC-002,2026-11-08,78.1,122,71,3,0.82,,Bajo
+PAC-003,2026-10-10,59.7,124,80,4,0.85,Náuseas,Bajo
+PAC-003,2026-10-11,58.8,111,90,4,0.84,Mareos;Fatiga extrema,Bajo
+PAC-003,2026-10-12,59.0,109,88,3,0.84,,Bajo
+PAC-003,2026-10-13,59.4,122,70,5,0.93,,Bajo
+PAC-003,2026-10-14,59.9,134,76,7,0.96,Hinchazón;Fatiga extrema,Bajo
+PAC-003,2026-10-15,59.8,118,76,3,0.87,,Bajo
+PAC-003,2026-10-16,59.0,121,77,6,0.91,Mareos,Bajo
+PAC-003,2026-10-17,59.0,109,76,3,0.98,,Bajo
+PAC-003,2026-10-18,59.3,123,82,3,0.93,,Bajo
+PAC-003,2026-10-19,59.3,133,84,5,1.06,Mareos;Poca orina,Bajo
+PAC-003,2026-10-20,59.1,116,80,5,1.09,,Bajo
+PAC-003,2026-10-21,58.7,124,81,4,1.16,,Bajo
+PAC-003,2026-10-22,59.4,126,69,6,1.04,Dificultad respiratoria;Fatiga extrema,Bajo
+PAC-003,2026-10-23,58.7,131,78,7,1.08,Poca orina,Bajo
+PAC-003,2026-10-24,59.8,127,74,5,1.13,,Bajo
+PAC-003,2026-10-25,58.8,125,84,8,1.13,Poca orina,Bajo
+PAC-003,2026-10-26,58.8,113,72,6,1.16,,Bajo
+PAC-003,2026-10-27,59.0,122,70,7,1.25,Hinchazón;Fatiga extrema,Medio
+PAC-003,2026-10-28,59.1,128,91,4,1.33,Mareos;Dificultad respiratoria,Medio
+PAC-003,2026-10-29,58.7,140,88,6,1.23,,Medio
+PAC-003,2026-10-30,59.3,109,89,2,1.34,Dificultad respiratoria;Mareos,Medio
+PAC-003,2026-10-31,58.8,131,71,6,1.26,,Medio
+PAC-003,2026-11-01,59.4,123,83,3,1.41,Mareos;Hinchazón,Medio
+PAC-003,2026-11-02,59.7,113,89,1,1.3,Mareos;Dificultad respiratoria,Medio
+PAC-003,2026-11-03,58.9,121,75,4,1.45,Fatiga extrema;Hinchazón;Mareos,Medio
+PAC-003,2026-11-04,59.6,120,70,2,1.43,Hinchazón;Poca orina;Fatiga extrema,Medio
+PAC-003,2026-11-05,58.7,111,83,3,1.43,Dificultad respiratoria;Mareos;Náuseas,Medio
+PAC-003,2026-11-06,59.5,126,90,3,1.56,Mareos;Náuseas,Alto
+PAC-003,2026-11-07,59.0,113,83,1,1.5,Hinchazón;Dificultad respiratoria;Náuseas,Alto
+PAC-003,2026-11-08,59.9,132,74,2,1.5,Dificultad respiratoria;Poca orina,Alto
+PAC-004,2026-10-10,60.4,140,76,3,0.77,Fatiga extrema,Bajo
+PAC-004,2026-10-11,60.9,139,80,3,0.76,,Bajo
+PAC-004,2026-10-12,60.8,117,81,5,0.68,Mareos;Poca orina,Bajo
+PAC-004,2026-10-13,61.3,108,78,5,0.71,,Bajo
+PAC-004,2026-10-14,61.4,120,90,3,0.78,,Bajo
+PAC-004,2026-10-15,60.7,133,80,7,0.79,Fatiga extrema,Bajo
+PAC-004,2026-10-16,60.6,111,89,5,0.66,Fatiga extrema;Hinchazón,Bajo
+PAC-004,2026-10-17,60.6,125,81,7,0.75,,Bajo
+PAC-004,2026-10-18,61.4,133,85,7,0.7,Poca orina,Bajo
+PAC-004,2026-10-19,60.3,134,82,7,0.68,,Bajo
+PAC-004,2026-10-20,60.3,143,72,4,0.77,Poca orina,Bajo
+PAC-004,2026-10-21,60.6,124,80,8,0.73,Fatiga extrema,Bajo
+PAC-004,2026-10-22,60.4,118,70,4,0.69,Dificultad respiratoria;Poca orina,Bajo
+PAC-004,2026-10-23,60.8,129,92,6,0.73,Dificultad respiratoria;Náuseas,Bajo
+PAC-004,2026-10-24,60.6,119,78,7,0.72,,Bajo
+PAC-004,2026-10-25,60.7,144,74,3,0.66,,Bajo
+PAC-004,2026-10-26,61.2,121,80,5,0.77,Poca orina;Mareos,Bajo
+PAC-004,2026-10-27,60.9,144,79,4,0.7,,Bajo
+PAC-004,2026-10-28,60.4,123,80,6,0.76,,Bajo
+PAC-004,2026-10-29,60.4,135,90,6,0.75,Fatiga extrema;Hinchazón,Bajo
+PAC-004,2026-10-30,60.8,141,82,6,0.8,Hinchazón;Mareos,Bajo
+PAC-004,2026-10-31,60.6,117,84,8,0.69,,Bajo
+PAC-004,2026-11-01,61.2,108,72,4,0.67,Hinchazón;Dificultad respiratoria,Bajo
+PAC-004,2026-11-02,61.1,127,72,8,0.74,,Bajo
+PAC-004,2026-11-03,60.4,127,84,7,0.69,Mareos;Hinchazón,Bajo
+PAC-004,2026-11-04,61.2,108,68,7,0.68,Náuseas,Bajo
+PAC-004,2026-11-05,61.1,123,83,7,0.7,Fatiga extrema;Mareos,Bajo
+PAC-004,2026-11-06,60.3,134,90,8,0.69,,Bajo
+PAC-004,2026-11-07,60.5,134,70,5,0.7,,Bajo
+PAC-004,2026-11-08,60.9,129,90,6,0.69,Fatiga extrema;Náuseas,Bajo
+PAC-005,2026-10-10,64.0,120,77,4,0.89,,Bajo
+PAC-005,2026-10-11,64.1,126,71,7,0.8,,Bajo
+PAC-005,2026-10-12,64.8,139,81,8,0.84,,Bajo
+PAC-005,2026-10-13,64.8,111,74,3,0.77,,Bajo
+PAC-005,2026-10-14,64.2,111,73,6,0.92,,Bajo
+PAC-005,2026-10-15,63.9,113,73,5,0.84,Mareos,Bajo
+PAC-005,2026-10-16,64.5,132,79,5,0.8,Hinchazón;Fatiga extrema,Bajo
+PAC-005,2026-10-17,63.7,125,70,5,0.84,,Bajo
+PAC-005,2026-10-18,64.4,121,80,5,0.83,,Bajo
+PAC-005,2026-10-19,63.8,138,74,5,0.89,Poca orina,Bajo
+PAC-005,2026-10-20,64.2,138,68,8,0.85,Náuseas;Fatiga extrema,Bajo
+PAC-005,2026-10-21,63.8,112,69,5,0.83,Hinchazón;Poca orina,Bajo
+PAC-005,2026-10-22,64.8,129,79,5,0.8,,Bajo
+PAC-005,2026-10-23,64.1,128,76,5,0.82,,Bajo
+PAC-005,2026-10-24,63.8,122,71,6,0.77,,Bajo
+PAC-005,2026-10-25,64.8,139,72,6,0.88,Poca orina;Fatiga extrema,Bajo
+PAC-005,2026-10-26,64.7,123,78,5,0.79,Mareos,Bajo
+PAC-005,2026-10-27,64.4,133,92,4,0.84,,Bajo
+PAC-005,2026-10-28,64.5,138,85,7,0.8,,Bajo
+PAC-005,2026-10-29,64.1,113,74,3,0.82,Hinchazón;Mareos,Bajo
+PAC-006,2026-10-10,89.3,134,82,7,0.94,,Bajo
+PAC-006,2026-10-11,89.9,115,92,5,0.93,,Bajo
+PAC-006,2026-10-12,89.3,124,74,6,0.84,Fatiga extrema,Bajo
+PAC-006,2026-10-13,89.3,126,86,4,0.83,,Bajo
+PAC-006,2026-10-14,89.6,122,88,3,0.84,Fatiga extrema;Náuseas,Bajo
+PAC-006,2026-10-15,89.2,138,75,6,0.89,,Bajo
+PAC-006,2026-10-16,90.1,122,71,3,0.93,,Bajo
+PAC-006,2026-10-17,90.1,131,84,4,0.82,,Bajo
+PAC-006,2026-10-18,90.2,114,88,7,0.86,Mareos,Bajo
+PAC-006,2026-10-19,89.1,129,72,3,0.9,Náuseas,Bajo
+PAC-006,2026-10-20,89.7,121,68,5,0.82,Hinchazón,Bajo
+PAC-006,2026-10-21,89.8,112,74,3,0.85,Náuseas,Bajo
+PAC-006,2026-10-22,89.2,133,89,7,0.92,Hinchazón;Poca orina,Bajo
+PAC-006,2026-10-23,89.8,133,90,5,0.81,,Bajo
+PAC-006,2026-10-24,89.4,111,77,8,0.85,Mareos,Bajo
+PAC-006,2026-10-25,89.5,131,88,4,0.88,Poca orina,Bajo
+PAC-006,2026-10-26,89.6,118,81,3,0.85,Náuseas;Hinchazón,Bajo
+PAC-006,2026-10-27,89.6,118,72,3,0.92,Dificultad respiratoria;Fatiga extrema,Bajo
+PAC-006,2026-10-28,89.8,133,70,7,0.8,,Bajo
+PAC-006,2026-10-29,89.6,117,79,5,0.89,Mareos,Bajo
+PAC-006,2026-10-30,90.1,114,80,6,0.81,,Bajo
+PAC-006,2026-10-31,89.4,110,83,5,0.91,,Bajo
+PAC-006,2026-11-01,89.9,118,88,4,0.8,Hinchazón;Dificultad respiratoria,Bajo
+PAC-006,2026-11-02,90.0,119,86,4,0.89,,Bajo
+PAC-006,2026-11-03,89.5,115,72,4,0.8,,Bajo
+PAC-006,2026-11-04,89.1,143,92,8,0.94,,Bajo
+PAC-006,2026-11-05,89.5,137,85,8,0.79,Hinchazón,Bajo
+PAC-006,2026-11-06,89.3,132,89,5,0.91,Fatiga extrema;Dificultad respiratoria,Bajo
+PAC-006,2026-11-07,89.0,139,82,4,0.86,Náuseas;Hinchazón,Bajo
+PAC-006,2026-11-08,89.5,112,72,5,0.86,Náuseas;Poca orina,Bajo
+PAC-007,2026-10-10,60.4,116,70,8,0.86,,Bajo
+PAC-007,2026-10-11,60.4,140,80,8,0.87,,Bajo
+PAC-007,2026-10-12,60.4,112,87,8,0.99,,Bajo
+PAC-007,2026-10-13,60.6,139,77,4,0.98,,Bajo
+PAC-007,2026-10-14,60.4,130,87,5,1.0,,Bajo
+PAC-007,2026-10-15,60.5,140,83,4,0.94,Poca orina,Bajo
+PAC-007,2026-10-16,60.7,110,74,4,1.04,,Bajo
+PAC-007,2026-10-17,60.7,132,73,5,1.03,Mareos,Bajo
+PAC-007,2026-10-18,61.1,131,82,7,1.01,,Bajo
+PAC-007,2026-10-19,60.6,142,88,6,1.1,,Bajo
+PAC-007,2026-10-20,60.8,131,86,4,1.16,Fatiga extrema,Bajo
+PAC-007,2026-10-21,60.9,119,87,8,1.12,,Bajo
+PAC-007,2026-10-22,60.6,145,89,5,1.25,Dificultad respiratoria,Medio
+PAC-007,2026-10-23,60.6,126,87,8,1.23,,Medio
+PAC-007,2026-10-24,60.5,122,87,8,1.21,Hinchazón,Medio
+PAC-007,2026-10-25,60.3,130,77,3,1.17,,Bajo
+PAC-007,2026-10-26,60.8,127,86,4,1.28,,Medio
+PAC-007,2026-10-27,60.4,123,90,4,1.25,Náuseas;Mareos,Medio
+PAC-007,2026-10-28,61.4,125,80,3,1.31,Mareos;Náuseas,Medio
+PAC-007,2026-10-29,61.4,145,82,4,1.42,Mareos;Dificultad respiratoria,Medio
+PAC-007,2026-10-30,61.0,133,73,2,1.33,Hinchazón;Mareos,Medio
+PAC-007,2026-10-31,61.0,120,72,4,1.34,Hinchazón;Dificultad respiratoria,Medio
+PAC-007,2026-11-01,60.4,111,91,4,1.37,Dificultad respiratoria;Náuseas;Fatiga extrema,Medio
+PAC-007,2026-11-02,61.2,137,70,4,1.48,Poca orina;Mareos,Medio
+PAC-007,2026-11-03,61.1,115,78,3,1.42,Fatiga extrema;Náuseas,Medio
+PAC-007,2026-11-04,61.2,141,76,3,1.53,Mareos;Dificultad respiratoria;Poca orina,Alto
+PAC-007,2026-11-05,60.4,124,75,2,1.54,Hinchazón;Dificultad respiratoria,Alto
+PAC-007,2026-11-06,61.1,132,88,4,1.62,Náuseas;Poca orina;Fatiga extrema,Alto
+PAC-007,2026-11-07,61.5,122,86,3,1.57,Hinchazón;Poca orina,Alto
+PAC-007,2026-11-08,61.0,118,72,1,1.64,Dificultad respiratoria;Mareos;Hinchazón,Alto
+PAC-008,2026-10-10,61.7,109,69,4,0.78,Náuseas,Bajo
+PAC-008,2026-10-11,61.7,110,70,7,0.74,,Bajo
+PAC-008,2026-10-12,61.8,142,89,3,0.75,,Bajo
+PAC-008,2026-10-13,61.1,115,69,3,0.77,Hinchazón;Náuseas,Bajo
+PAC-008,2026-10-14,61.8,126,83,3,0.78,,Bajo
+PAC-008,2026-10-15,61.2,129,81,5,0.65,,Bajo
+PAC-008,2026-10-16,60.9,131,78,7,0.63,Fatiga extrema,Bajo
+PAC-008,2026-10-17,61.7,134,68,6,0.71,Dificultad respiratoria,Bajo
+PAC-008,2026-10-18,61.2,111,85,7,0.71,,Bajo
+PAC-008,2026-10-19,61.5,126,73,6,0.67,,Bajo
+PAC-008,2026-10-20,61.2,111,68,5,0.63,,Bajo
+PAC-008,2026-10-21,62.0,145,79,7,0.71,Mareos;Náuseas,Bajo
+PAC-008,2026-10-22,61.2,121,90,4,0.67,,Bajo
+PAC-008,2026-10-23,61.9,113,83,8,0.71,,Bajo
+PAC-008,2026-10-24,61.6,130,71,6,0.72,,Bajo
+PAC-008,2026-10-25,61.3,109,79,4,0.78,,Bajo
+PAC-008,2026-10-26,61.0,122,82,4,0.68,Dificultad respiratoria;Mareos,Bajo
+PAC-008,2026-10-27,61.2,128,84,4,0.72,,Bajo
+PAC-008,2026-10-28,61.7,118,82,6,0.77,Mareos;Dificultad respiratoria,Bajo
+PAC-008,2026-10-29,61.1,129,82,8,0.74,Dificultad respiratoria,Bajo
+PAC-008,2026-10-30,61.4,125,77,8,0.77,,Bajo
+PAC-008,2026-10-31,61.7,123,91,5,0.76,,Bajo
+PAC-008,2026-11-01,61.1,120,76,8,0.73,Náuseas,Bajo
+PAC-008,2026-11-02,62.0,114,74,6,0.79,,Bajo
+PAC-008,2026-11-03,61.8,127,81,5,0.65,,Bajo
+PAC-008,2026-11-04,61.2,132,82,3,0.66,,Bajo
+PAC-008,2026-11-05,61.4,126,82,3,0.63,Mareos;Náuseas,Bajo
+PAC-008,2026-11-06,61.9,135,90,7,0.65,Hinchazón;Náuseas,Bajo
+PAC-008,2026-11-07,61.8,119,88,3,0.72,Náuseas;Dificultad respiratoria,Bajo
+PAC-008,2026-11-08,61.6,114,81,4,0.7,Fatiga extrema,Bajo
+PAC-009,2026-10-10,80.2,134,84,8,0.96,Poca orina;Mareos,Bajo
+PAC-009,2026-10-11,81.3,128,92,3,1.04,,Bajo
+PAC-009,2026-10-12,80.5,121,73,8,1.0,Hinchazón;Mareos,Bajo
+PAC-009,2026-10-13,80.8,114,86,6,1.06,,Bajo
+PAC-009,2026-10-14,81.0,131,84,5,1.02,Dificultad respiratoria;Hinchazón,Bajo
+PAC-009,2026-10-15,80.7,115,91,7,1.0,Náuseas;Mareos,Bajo
+PAC-009,2026-10-16,80.5,132,80,3,0.99,,Bajo
+PAC-009,2026-10-17,80.9,114,75,5,0.94,Poca orina;Fatiga extrema,Bajo
+PAC-009,2026-10-18,81.4,133,82,4,1.05,,Bajo
+PAC-009,2026-10-19,81.2,120,83,8,0.96,,Bajo
+PAC-009,2026-10-20,81.2,117,79,8,1.02,,Bajo
+PAC-009,2026-10-21,81.1,116,92,6,1.04,Poca orina;Fatiga extrema,Bajo
+PAC-009,2026-10-22,80.5,132,89,5,0.99,,Bajo
+PAC-009,2026-10-23,80.8,125,79,4,1.09,,Bajo
+PAC-009,2026-10-24,80.8,113,89,5,1.04,Poca orina,Bajo
+PAC-009,2026-10-25,80.3,144,78,4,0.96,Poca orina,Bajo
+PAC-009,2026-10-26,80.9,108,74,3,1.02,Mareos,Bajo
+PAC-009,2026-10-27,80.3,117,75,4,1.04,Dificultad respiratoria,Bajo
+PAC-009,2026-10-28,80.5,133,85,4,1.06,Náuseas,Bajo
+PAC-009,2026-10-29,81.0,143,88,5,1.03,,Bajo
+PAC-009,2026-10-30,80.8,136,89,3,0.96,,Bajo
+PAC-009,2026-10-31,80.5,116,83,6,1.02,Poca orina,Bajo
+PAC-009,2026-11-01,81.0,123,83,4,1.02,Poca orina;Náuseas,Bajo
+PAC-009,2026-11-02,80.4,128,82,8,1.02,,Bajo
+PAC-009,2026-11-03,80.7,134,89,3,1.02,Poca orina,Bajo
+PAC-009,2026-11-04,81.0,109,87,3,0.96,Mareos,Bajo
+PAC-009,2026-11-05,80.8,139,92,4,1.04,Hinchazón,Bajo
+PAC-009,2026-11-06,80.6,131,78,6,0.94,Mareos;Náuseas,Bajo
+PAC-009,2026-11-07,80.5,129,81,5,1.06,,Bajo
+PAC-009,2026-11-08,80.6,139,80,5,1.02,Fatiga extrema,Bajo
+PAC-010,2026-10-10,66.9,115,78,4,0.9,,Bajo
+PAC-010,2026-10-11,66.8,113,69,6,0.9,Náuseas,Bajo
+PAC-010,2026-10-12,66.2,127,71,3,0.99,Dificultad respiratoria;Mareos,Bajo
+PAC-010,2026-10-13,67.0,142,87,6,0.9,Dificultad respiratoria;Hinchazón,Bajo
+PAC-010,2026-10-14,66.3,137,88,4,1.02,,Bajo
+PAC-010,2026-10-15,67.1,134,92,3,0.96,,Bajo
+PAC-010,2026-10-16,66.5,116,77,7,1.12,,Bajo
+PAC-010,2026-10-17,66.6,128,68,6,1.11,Náuseas,Bajo
+PAC-010,2026-10-18,66.7,141,69,3,1.11,,Bajo
+PAC-010,2026-10-19,66.6,108,89,6,1.17,Dificultad respiratoria;Poca orina,Bajo
+PAC-010,2026-10-20,66.7,134,85,3,1.17,,Bajo
+PAC-010,2026-10-21,66.8,135,68,3,1.11,Náuseas;Mareos,Bajo
+PAC-010,2026-10-22,67.3,113,74,3,1.23,,Medio
+PAC-010,2026-10-23,66.4,144,75,6,1.17,,Bajo
+PAC-010,2026-10-24,67.2,131,92,8,1.29,,Medio
+PAC-010,2026-10-25,66.4,143,90,4,1.31,Mareos;Hinchazón,Medio
+PAC-010,2026-10-26,66.2,113,80,3,1.3,Hinchazón;Mareos;Dificultad respiratoria,Medio
+PAC-010,2026-10-27,66.2,131,86,4,1.3,Poca orina;Dificultad respiratoria,Medio
+PAC-010,2026-10-28,66.5,118,88,4,1.35,Náuseas;Hinchazón,Medio
+PAC-010,2026-10-29,66.4,111,87,3,1.37,Fatiga extrema;Dificultad respiratoria;Mareos,Medio
+PAC-010,2026-10-30,67.1,145,81,2,1.46,Náuseas;Dificultad respiratoria,Medio
+PAC-010,2026-10-31,66.4,108,78,3,1.41,Dificultad respiratoria;Náuseas;Poca orina,Medio
+PAC-010,2026-11-01,66.4,117,86,2,1.41,Dificultad respiratoria;Hinchazón,Medio
+PAC-010,2026-11-02,66.7,139,80,2,1.44,Fatiga extrema;Dificultad respiratoria;Hinchazón,Medio
+PAC-010,2026-11-03,66.2,133,82,2,1.55,Fatiga extrema;Dificultad respiratoria,Alto
+PAC-010,2026-11-04,66.7,142,79,1,1.59,Poca orina;Mareos,Alto
+PAC-010,2026-11-05,66.7,120,74,2,1.51,Dificultad respiratoria;Fatiga extrema;Poca orina,Alto
+PAC-010,2026-11-06,66.5,144,79,4,1.53,Mareos;Fatiga extrema,Alto
+PAC-010,2026-11-07,67.2,139,79,1,1.65,Náuseas;Hinchazón,Alto
+PAC-010,2026-11-08,66.8,130,76,1,1.61,Hinchazón;Náuseas;Fatiga extrema,Alto
+PAC-011,2026-10-10,64.2,125,81,3,0.8,Dificultad respiratoria;Mareos,Bajo
+PAC-011,2026-10-11,64.3,110,78,4,0.81,,Bajo
+PAC-011,2026-10-12,64.0,143,79,8,0.82,Hinchazón;Mareos,Bajo
+PAC-011,2026-10-13,65.0,133,71,8,0.73,,Bajo
+PAC-011,2026-10-14,64.6,113,89,7,0.81,Fatiga extrema,Bajo
+PAC-011,2026-10-15,65.1,122,73,3,0.72,Náuseas;Fatiga extrema,Bajo
+PAC-011,2026-10-16,65.0,109,69,5,0.81,Hinchazón,Bajo
+PAC-011,2026-10-17,64.1,108,74,8,0.78,Hinchazón;Mareos,Bajo
+PAC-011,2026-10-18,64.5,131,76,6,0.78,Mareos;Hinchazón,Bajo
+PAC-011,2026-10-19,64.5,117,89,3,0.68,Poca orina;Náuseas,Bajo
+PAC-011,2026-10-20,64.9,118,75,3,0.73,,Bajo
+PAC-011,2026-10-21,64.1,136,71,6,0.81,Mareos,Bajo
+PAC-011,2026-10-22,64.5,129,78,4,0.79,,Bajo
+PAC-011,2026-10-23,64.3,111,73,8,0.73,Náuseas,Bajo
+PAC-011,2026-10-24,64.5,117,76,6,0.73,,Bajo
+PAC-011,2026-10-25,64.0,144,77,5,0.72,,Bajo
+PAC-011,2026-10-26,64.1,137,83,3,0.79,Poca orina,Bajo
+PAC-011,2026-10-27,64.7,121,85,6,0.68,,Bajo
+PAC-011,2026-10-28,64.3,120,79,6,0.79,,Bajo
+PAC-011,2026-10-29,65.1,114,80,5,0.82,,Bajo
+PAC-011,2026-10-30,64.0,126,72,8,0.72,,Bajo
+PAC-011,2026-10-31,64.1,108,84,5,0.66,Dificultad respiratoria,Bajo
+PAC-011,2026-11-01,64.2,144,73,4,0.69,Hinchazón;Poca orina,Bajo
+PAC-011,2026-11-02,64.8,120,87,3,0.79,,Bajo
+PAC-011,2026-11-03,64.2,120,86,5,0.79,Fatiga extrema;Náuseas,Bajo
+PAC-011,2026-11-04,64.8,141,81,8,0.69,,Bajo
+PAC-011,2026-11-05,64.3,139,70,3,0.8,Fatiga extrema,Bajo
+PAC-011,2026-11-06,64.2,144,79,3,0.72,Náuseas;Fatiga extrema,Bajo
+PAC-011,2026-11-07,64.7,108,79,7,0.68,Dificultad respiratoria,Bajo
+PAC-011,2026-11-08,64.1,123,78,8,0.81,,Bajo
+PAC-012,2026-10-10,77.0,139,82,7,1.11,Hinchazón,Bajo
+PAC-012,2026-10-11,75.9,113,75,7,0.97,,Bajo
+PAC-012,2026-10-12,76.2,143,68,3,1.0,,Bajo
+PAC-012,2026-10-13,76.2,144,82,7,0.98,,Bajo
+PAC-012,2026-10-14,76.9,119,69,5,1.01,Hinchazón;Fatiga extrema,Bajo
+PAC-012,2026-10-15,76.8,115,71,3,0.99,Dificultad respiratoria;Mareos,Bajo
+PAC-012,2026-10-16,76.5,122,75,4,1.03,,Bajo
+PAC-012,2026-10-17,76.0,109,88,6,1.07,Mareos;Poca orina,Bajo
+PAC-012,2026-10-18,76.3,111,92,5,1.08,,Bajo
+PAC-012,2026-10-19,76.8,135,86,5,1.02,,Bajo
+PAC-012,2026-10-20,76.2,117,89,5,1.1,,Bajo
+PAC-012,2026-10-21,76.3,141,73,3,1.01,Mareos;Hinchazón,Bajo
+PAC-012,2026-10-22,76.4,109,75,4,1.02,,Bajo
+PAC-012,2026-10-23,76.8,110,69,8,1.03,Poca orina;Hinchazón,Bajo
+PAC-012,2026-10-24,76.5,110,87,3,1.07,Mareos,Bajo
+PAC-012,2026-10-25,76.4,110,77,3,1.01,,Bajo
+PAC-012,2026-10-26,76.0,140,76,3,1.02,,Bajo
+PAC-012,2026-10-27,76.4,140,72,5,1.04,,Bajo
+PAC-012,2026-10-28,76.1,113,91,7,1.11,Fatiga extrema,Bajo
+PAC-012,2026-10-29,76.1,132,74,7,1.01,Dificultad respiratoria;Mareos,Bajo
+PAC-012,2026-10-30,76.6,138,77,3,1.08,Dificultad respiratoria;Fatiga extrema,Bajo
+PAC-012,2026-10-31,76.1,142,80,7,1.01,,Bajo
+PAC-012,2026-11-01,76.9,123,78,7,1.03,Náuseas,Bajo
+PAC-012,2026-11-02,76.9,121,77,3,1.02,Fatiga extrema,Bajo
+PAC-012,2026-11-03,76.5,130,82,8,1.09,,Bajo
+PAC-012,2026-11-04,76.7,114,84,4,0.98,Poca orina;Fatiga extrema,Bajo
+PAC-012,2026-11-05,76.3,130,72,8,1.13,,Bajo
+PAC-012,2026-11-06,76.0,138,76,8,1.0,Dificultad respiratoria,Bajo
+PAC-012,2026-11-07,76.3,114,68,6,1.08,,Bajo
+PAC-012,2026-11-08,76.4,144,72,6,1.09,,Bajo
