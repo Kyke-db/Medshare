@@ -16,7 +16,7 @@ export default function Boberto({ open, onClose }) {
   const [msgs, setMsgs] = useState([{ bot: true, t: "¡Hola! Soy Boberto, tu asistente. Puedo ayudarte a entender exámenes y resolver dudas generales sobre salud renal. No emito diagnósticos." }]);
   const [text, setText] = useState("");
   const end = useRef();
-  useEffect(() => end.current?.scrollIntoView({ behavior: "smooth" }), [msgs, open]);
+  useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, open]);
 
   const send = (q) => {
     q = (q ?? text).trim();
