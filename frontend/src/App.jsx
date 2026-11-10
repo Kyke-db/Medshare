@@ -11,12 +11,13 @@ import Reminders from "./pages/Reminders";
 import Profile from "./pages/Profile";
 import Messages from "./pages/Messages";
 import Dashboard from "./pages/Dashboard";
+import DoctorMessages from "./pages/DoctorMessages";
 
 export default function App() {
   const { user, ready } = useAuth();
   const [accepted, setAccepted] = useState(localStorage.getItem("legal") === "1");
 
-  if (!ready) return <p className="p-8 text-center text-slate-500">Cargando…</p>;
+  if (!ready) return <div className="min-h-screen grid place-items-center"><div className="w-8 h-8 border-[3px] border-brand border-t-transparent rounded-full animate-spin" /></div>;
   // RNF-03: no se puede usar la app sin aceptar el aviso legal
   if (!accepted) return <Legal onAccept={() => { localStorage.setItem("legal", "1"); setAccepted(true); }} />;
   if (!user) return <Login />;
@@ -26,7 +27,11 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         {user.role === "doctor" ? (
-          <Route path="/dashboard" element={<Dashboard />} />
+          <>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/mensajes" element={<DoctorMessages />} />
+            <Route path="/perfil" element={<Profile />} />
+          </>
         ) : (
           <>
             <Route path="/" element={<Home />} />

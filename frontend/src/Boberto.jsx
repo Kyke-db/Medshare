@@ -16,18 +16,23 @@ export default function Boberto({ open, onClose }) {
   const [msgs, setMsgs] = useState([{ bot: true, t: "¡Hola! Soy Boberto, tu asistente. Puedo ayudarte a entender exámenes y resolver dudas generales sobre salud renal. No emito diagnósticos." }]);
   const [text, setText] = useState("");
   const end = useRef();
-  useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, open]);
+  const [typing, setTyping] = useState(false);
+  const timer = useRef();
+  useEffect(() => () => clearTimeout(timer.current), []);
+  useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, open, typing]);
 
   const send = (q) => {
     q = (q ?? text).trim();
-    if (!q) return;
+    if (!q || typing) return;
     const ans = RULES.find(([re]) => re.test(q))?.[1] ?? "Puedo ayudarte con dudas generales sobre hidratación, síntomas de alerta y medicamentos de riesgo. Para temas clínicos, consulta a tu médico.";
-    setMsgs((m) => [...m, { t: q }, { bot: true, t: ans }]);
+    setMsgs((m) => [...m, { t: q }]);
     setText("");
+    setTyping(true); // muestra "escribiendo…" y luego la respuesta
+    timer.current = setTimeout(() => { setMsgs((m) => [...m, { bot: true, t: ans }]); setTyping(false); }, 900);
   };
   if (!open) return null;
   return (
-    <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 z-50 sm:w-96 sm:h-[34rem] bg-white sm:rounded-2xl shadow-2xl flex flex-col border border-blue-100">
+    <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 z-50 sm:w-96 sm:h-[34rem] bg-white sm:rounded-2xl shadow-2xl flex flex-col border border-blue-100 anim-panel">
       <div className="flex items-center gap-3 p-4 border-b border-blue-100">
         <div className="w-10 h-10 rounded-full bg-brand text-white grid place-items-center"><Bot size={22} /></div>
         <div className="flex-1"><p className="font-bold leading-tight">Boberto</p><p className="text-xs text-slate-500">Tu aliado en el cuidado renal</p></div>
@@ -35,11 +40,12 @@ export default function Boberto({ open, onClose }) {
       </div>
       <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-bg">
         {msgs.map((m, i) => (
-          <div key={i} className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm ${m.bot ? "bg-slate-100 text-slate-800" : "bg-brand text-white ml-auto"}`}>{m.t}</div>
+          <div key={i} className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm anim-msg ${m.bot ? "bg-slate-100 text-slate-800" : "bg-brand text-white ml-auto"}`}>{m.t}</div>
         ))}
         {msgs.length === 1 && SUGGEST.map((s) => (
-          <button key={s} onClick={() => send(s)} className="block w-full text-left text-sm card hover:bg-soft">{s}</button>
+          <button key={s} onClick={() => send(s)} className="block w-full text-left text-sm card hover:bg-soft anim-up">{s}</button>
         ))}
+        {typing && <div className="bg-slate-100 rounded-2xl px-4 py-3 w-16 flex gap-1 anim-msg" aria-label="Boberto está escribiendo"><span className="dot" /><span className="dot" /><span className="dot" /></div>}
         <div ref={end} />
       </div>
       <form onSubmit={(e) => { e.preventDefault(); send(); }} className="p-3 flex gap-2 border-t border-blue-100">

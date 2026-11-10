@@ -14,16 +14,16 @@ export default function Home() {
   const { user } = useAuth();
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-gradient-to-r from-blue-100 to-soft p-6 md:p-8">
+      <div className="rounded-3xl bg-gradient-to-r from-blue-100 to-soft p-6 md:p-8 anim-up">
         <p className="text-slate-600">¡Bienvenido, {user.name.split(" ")[0]}!</p>
         <h1 className="text-2xl md:text-3xl font-extrabold text-brand-dark">Vamos a priorizar tu salud renal.</h1>
         <p className="text-slate-500 text-sm mt-1">Aprende y monitorea.</p>
         <Link to="/salud" className="btn inline-block mt-4">Registrar métricas de hoy</Link>
       </div>
 
-      <section>
+      <section className="anim-up" style={{ animationDelay: "120ms" }}>
         <h2 className="font-bold text-lg mb-3">Educación sobre Lesión Renal Aguda (LRA)</h2>
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid sm:grid-cols-2 gap-3 stagger">
           {ARTICLES.map((a) => (
             <Link key={a.id} to={`/aprender/${a.id}`} className="card flex items-center gap-3 hover:shadow-md">
               <span className="text-3xl">{a.emoji}</span>
@@ -34,9 +34,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section className="anim-up" style={{ animationDelay: "240ms" }}>
         <h2 className="font-bold text-lg mb-3">Consejos de salud renal</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 stagger">
           {TIPS.map(([Icon, t, d]) => (
             <div key={t} className="card text-center"><Icon className="mx-auto text-brand" /><p className="font-semibold text-sm mt-2">{t}</p><p className="text-xs text-slate-500 mt-1">{d}</p></div>
           ))}

@@ -20,6 +20,11 @@ medshare/
 
 Código 2FA (simulado): **123456**. Los pacientes nuevos se registran desde la pantalla de login.
 
+## Funciones
+- **Paciente:** Hogar, Aprender, Salud (registrar y **eliminar registros**), Recordatorios, Perfil (**foto, datos, contraseña**, antecedentes) y chat con el médico.
+- **Médico:** Dashboard (lee `pacientes.csv`), **Mensajes con pacientes** (lista con no leídos y chat) y Perfil.
+- Los chats se actualizan solos cada 5 s; el contador de mensajes nuevos cada 15 s.
+
 ## Ejecutar (modo "entrega al cliente": un solo servidor)
 Requisitos: Python 3.10+ y Node 18+.
 

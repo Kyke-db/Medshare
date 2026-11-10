@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Droplets, Minus, Plus, Scale, Activity } from "lucide-react";
+import { Droplets, Minus, Plus, Scale, Activity, Trash2 } from "lucide-react";
 import { api } from "../api";
 import { SYMPTOMS } from "../content";
 
@@ -10,6 +10,7 @@ export default function Health() {
   const [logs, setLogs] = useState([]);
   const [f, setF] = useState(EMPTY);
   const [msg, setMsg] = useState(null);
+  const [gone, setGone] = useState(null);
   const load = () => api("/logs").then(setLogs).catch(() => {});
   useEffect(() => { load(); }, []);
 
@@ -27,6 +28,15 @@ export default function Health() {
     } catch (e) { setMsg({ ok: false, t: e.message }); }
   }
 
+  async function remove(id) {
+    if (!window.confirm("¿Eliminar este registro? Esta acción no se puede deshacer.")) return;
+    setGone(id); // la fila se desvanece antes de borrarse
+    await new Promise((r) => setTimeout(r, 300));
+    try { await api(`/logs/${id}`, { method: "DELETE" }); setMsg({ ok: true, t: "Registro eliminado" }); await load(); }
+    catch (e) { setMsg({ ok: false, t: e.message }); }
+    setGone(null);
+  }
+
   const last = logs[0];
   const chart = [...logs].reverse().map((l) => ({ dia: l.created_at.slice(5, 10), Peso: l.weight, Sistólica: l.systolic }));
   const cards = last && [
@@ -41,7 +51,7 @@ export default function Health() {
       {last && (
         <section>
           <h2 className="font-bold mb-2">Tus índices recientes <span className="text-xs font-normal text-slate-500">({last.created_at.slice(0, 10)})</span></h2>
-          <div className="grid sm:grid-cols-3 gap-3">
+          <div className="grid sm:grid-cols-3 gap-3 stagger">
             {cards.map(([Icon, t, v]) => (
               <div key={t} className="card flex items-center gap-3"><Icon className="text-brand" /><div><p className="text-xs text-slate-500">{t}</p><p className="font-bold">{v}</p></div></div>
             ))}
@@ -70,7 +80,7 @@ export default function Health() {
           <p className="text-sm mb-1">¿Cuántas veces orinaste hoy?</p>
           <div className="flex items-center gap-3">
             <button type="button" className="btn !p-2" onClick={() => setF({ ...f, micturition_count: Math.max(0, f.micturition_count - 1) })}><Minus size={16} /></button>
-            <span className="text-2xl font-bold w-10 text-center">{f.micturition_count}</span>
+            <span key={f.micturition_count} className="text-2xl font-bold w-10 text-center anim-pop">{f.micturition_count}</span>
             <button type="button" className="btn !p-2" onClick={() => setF({ ...f, micturition_count: f.micturition_count + 1 })}><Plus size={16} /></button>
           </div>
           <div className="flex gap-2 mt-3">
@@ -93,9 +103,30 @@ export default function Health() {
         </div>
 
         <textarea className="input" rows={2} placeholder="Notas adicionales (opcional)" value={f.notes} onChange={(e) => setF({ ...f, notes: e.target.value })} />
-        {msg && <p className={`text-sm rounded-lg p-2 ${msg.ok ? "bg-emerald-50 text-ok" : "bg-red-50 text-danger"}`}>{msg.t}</p>}
+        {msg && <p key={msg.t} className={`text-sm rounded-lg p-2 anim-pop ${msg.ok ? "bg-emerald-50 text-ok" : "bg-red-50 text-danger"}`}>{msg.t}</p>}
         <button className="btn w-full sm:w-auto">Guardar registro</button>
       </form>
+
+      {logs.length > 0 && (
+        <section className="card">
+          <h2 className="font-bold">Mis registros</h2>
+          <p className="text-xs text-slate-500 mb-2">¿Te equivocaste en un dato? Elimina el registro y vuelve a guardarlo con los valores correctos.</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead><tr className="text-left text-xs text-slate-500"><th className="py-1">Fecha</th><th>Peso</th><th>Presión</th><th>Micciones</th><th>Síntomas</th><th></th></tr></thead>
+              <tbody className="stagger-fade">
+                {logs.map((l) => (
+                  <tr key={l.id} className={`border-t border-slate-100 transition-opacity duration-300 ${gone === l.id ? "opacity-0 bg-red-50" : ""}`}>
+                    <td className="py-1.5 whitespace-nowrap">{l.created_at.slice(0, 16)}</td><td>{l.weight} kg</td><td>{l.systolic}/{l.diastolic}</td>
+                    <td>{l.micturition_count} · {l.urine_amount}</td><td className="text-xs">{l.symptoms.length ? l.symptoms.join(", ") : "—"}</td>
+                    <td><button onClick={() => remove(l.id)} className="text-danger p-1 hover:bg-red-50 rounded" aria-label="Eliminar registro"><Trash2 size={16} /></button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

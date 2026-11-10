@@ -30,13 +30,17 @@ export default function Login() {
 
   return (
     <div className="min-h-screen md:grid md:grid-cols-2">
-      <div className="hidden md:flex flex-col justify-center items-center bg-gradient-to-br from-brand to-brand-dark text-white p-12 text-center">
-        <HeartPulse size={72} />
-        <h1 className="text-5xl font-extrabold mt-4">MedShare</h1>
-        <p className="mt-3 text-lg text-blue-100 max-w-sm">Vamos a priorizar tu salud renal. Aprende y monitorea.</p>
+      <div className="hidden md:flex flex-col justify-center items-center hero-grad text-white p-12 text-center relative overflow-hidden">
+        <span className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-white/10 blur-2xl floaty" />
+        <span className="absolute -bottom-28 -right-20 w-96 h-96 rounded-full bg-white/10 blur-3xl floaty" style={{ animationDelay: "-2.5s" }} />
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="floaty"><HeartPulse size={72} className="heartbeat" /></div>
+          <h1 className="text-5xl font-extrabold mt-4 anim-up" style={{ animationDelay: "150ms" }}>MedShare</h1>
+          <p className="mt-3 text-lg text-blue-100 max-w-sm anim-up" style={{ animationDelay: "300ms" }}>Vamos a priorizar tu salud renal. Aprende y monitorea.</p>
+        </div>
       </div>
       <div className="grid place-items-center p-4 min-h-screen md:min-h-0">
-        <form onSubmit={submit} className="card w-full max-w-sm space-y-3">
+        <form onSubmit={submit} className="card w-full max-w-sm space-y-3 anim-up">
           <h2 className="text-2xl font-extrabold text-brand-dark">
             {mode === "login" ? "Iniciar sesión" : mode === "register" ? "Crear cuenta" : "Verificación en dos pasos"}
           </h2>
@@ -62,7 +66,7 @@ export default function Login() {
               )}
             </>
           )}
-          {err && <p className="text-sm text-danger bg-red-50 rounded-lg p-2">{err}</p>}
+          {err && <p key={err} className="text-sm text-danger bg-red-50 rounded-lg p-2 anim-pop">{err}</p>}
           <button className="btn w-full" disabled={loading}>{mode === "2fa" ? "Verificar" : mode === "login" ? "Ingresar" : "Registrarme"}</button>
           {mode !== "2fa" && (
             <button type="button" className="text-sm text-brand w-full" onClick={() => { setErr(""); setMode(mode === "login" ? "register" : "login"); }}>

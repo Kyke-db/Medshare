@@ -5,8 +5,8 @@ export default function Legal({ onAccept }) {
   const [ok, setOk] = useState(false);
   return (
     <div className="min-h-screen grid place-items-center p-4">
-      <div className="card max-w-lg w-full space-y-4">
-        <div className="flex items-center gap-3 text-brand"><ShieldCheck size={32} /><h1 className="text-2xl font-extrabold">Aviso legal y términos de uso</h1></div>
+      <div className="card max-w-lg w-full space-y-4 anim-pop">
+        <div className="flex items-center gap-3 text-brand"><ShieldCheck size={32} className="heartbeat" /><h1 className="text-2xl font-extrabold">Aviso legal y términos de uso</h1></div>
         <ul className="list-disc pl-5 text-sm space-y-2 text-slate-700">
           <li>MedShare es una herramienta <b>informativa y educativa</b>. No emite diagnósticos médicos ni receta medicamentos.</li>
           <li>No reemplaza la evaluación de un profesional de la salud. Ante síntomas de alerta, acude a urgencias.</li>
