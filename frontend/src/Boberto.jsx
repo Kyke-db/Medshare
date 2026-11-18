@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Bot, Send, X } from "lucide-react";
+import { api } from "./api";
 
 // Asistente con respuestas predefinidas (plan de contingencia del RF-04: sin IA real, sin diagnósticos)
 const RULES = [
@@ -10,6 +11,7 @@ const RULES = [
   [/hidrat|agua|beber|líquido|liquido/i, "Mantenerte bien hidratado ayuda a proteger tus riñones. Si tienes vómitos, diarrea o fiebre, avisa a tu médico: pueden requerir ajustes."],
   [/síntoma|sintoma|hincha|náusea|nausea|fatiga|orina/i, "Señales para vigilar: poca orina, hinchazón en piernas o rostro, náuseas, fatiga extrema o falta de aire. Regístralos en Salud y consulta a tu médico si aparecen."],
 ];
+const DEFAULT = "Puedo ayudarte con dudas generales sobre hidratación, síntomas de alerta y medicamentos de riesgo. Para temas clínicos, consulta a tu médico.";
 const SUGGEST = ["Ayúdame a entender mi examen de laboratorio", "Ayúdame a agendar una cita médica", "Tengo una duda sobre mi hidratación / síntomas"];
 
 export default function Boberto({ open, onClose }) {
@@ -21,14 +23,23 @@ export default function Boberto({ open, onClose }) {
   useEffect(() => () => clearTimeout(timer.current), []);
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, open, typing]);
 
-  const send = (q) => {
+  const send = async (q) => {
     q = (q ?? text).trim();
     if (!q || typing) return;
-    const ans = RULES.find(([re]) => re.test(q))?.[1] ?? "Puedo ayudarte con dudas generales sobre hidratación, síntomas de alerta y medicamentos de riesgo. Para temas clínicos, consulta a tu médico.";
-    setMsgs((m) => [...m, { t: q }]);
+    const history = [...msgs, { t: q }];
+    setMsgs(history);
     setText("");
-    setTyping(true); // muestra "escribiendo…" y luego la respuesta
-    timer.current = setTimeout(() => { setMsgs((m) => [...m, { bot: true, t: ans }]); setTyping(false); }, 900);
+    setTyping(true); // muestra "escribiendo…" mientras responde la IA
+    let ans;
+    try {
+      const r = await api("/chatbot", { method: "POST", body: { messages: history.map((m) => ({ role: m.bot ? "assistant" : "user", content: m.t })) } });
+      ans = r.reply;
+    } catch {
+      // Respaldo (RF-04): si la IA no responde, se usan las reglas predefinidas
+      ans = RULES.find(([re]) => re.test(q))?.[1] ?? DEFAULT;
+    }
+    setMsgs((m) => [...m, { bot: true, t: ans }]);
+    setTyping(false);
   };
   if (!open) return null;
   return (

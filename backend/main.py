@@ -102,7 +102,8 @@ def init():
 
 
 init()
-
+from chatbot import make_router
+app.include_router(make_router(current_user))
 
 # ---------- autenticación ----------
 class Login(BaseModel):
