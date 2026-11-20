@@ -5,10 +5,13 @@ from datetime import date, timedelta
 from pathlib import Path
 
 import jwt
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from chatbot import make_router as make_chatbot_router
+from citas import init_citas, make_router as make_citas_router
 
 BASE = Path(__file__).parent
 DB = BASE / "medshare.db"
@@ -22,6 +25,7 @@ mimetypes.add_type("text/javascript", ".js")
 mimetypes.add_type("text/css", ".css")
 
 app = FastAPI(title="MedShare")
+bearer_scheme = HTTPBearer(auto_error=False)
 
 
 # ---------- utilidades ----------
@@ -61,8 +65,10 @@ def public(u):
     return u
 
 
-def current_user(authorization: str = Header("")):
-    uid = read_token(authorization.removeprefix("Bearer "), "access")
+def current_user(credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme)):
+    if credentials is None or credentials.scheme.lower() != "bearer":
+        raise HTTPException(401, "Autenticación requerida")
+    uid = read_token(credentials.credentials, "access")
     with db() as c:
         u = c.execute("SELECT * FROM users WHERE id=?", (uid,)).fetchone()
     if not u:
@@ -102,8 +108,10 @@ def init():
 
 
 init()
-from chatbot import make_router
-app.include_router(make_router(current_user))
+app.include_router(make_chatbot_router(current_user, db))
+init_citas(db)
+app.include_router(make_citas_router(current_user, db))
+
 
 # ---------- autenticación ----------
 class Login(BaseModel):
