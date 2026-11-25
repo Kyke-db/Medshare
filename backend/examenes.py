@@ -220,18 +220,46 @@ def explain_context(db, patient_id):
     if not exams:
         return "El paciente todavía no ha subido ningún examen."
     cmp = compare_exam(db, get_exam(db, exams[0]["id"]))
-    lines = [f"Último examen del paciente: {cmp['exam']['exam_type']} del {pretty_date(cmp['exam']['taken_at'])}.",
-             "Resultados calculados por el sistema (no los recalcules):"]
+
+    # Preparar los resultados para la plantilla
+    fuera_rango = []
+    dentro_rango = []
+
     for v in cmp["values"]:
-        estado = {"normal": "dentro del rango", "alto": "ALTO", "bajo": "BAJO"}[v["status"]]
-        line = f"- {v['name']}: {fn(v['value'])} {v['unit']} (rango {ref_text(v['ref_min'], v['ref_max'])}), {estado}"
-        if v["trend"]:
-            cambio = {"igual": "sin cambios", "sube": f"sube {fn(abs(v['pct']))}%" if v["pct"] is not None else "sube",
-                      "baja": f"baja {fn(abs(v['pct']))}%" if v["pct"] is not None else "baja"}[v["trend"]]
-            line += f"; antes {fn(v['previous_value'])} ({cambio})"
-        lines.append(line)
-    lines.append(f"Comparado con el examen del {pretty_date(cmp['previous']['taken_at'])}." if cmp["previous"]
-                 else "No hay un examen anterior del mismo tipo para comparar.")
+        if v["status"] != "normal":
+            # Para valores fuera de rango, incluimos el cambio porcentual
+            if v["trend"]:
+                cambio = {"igual": "sin cambios", "sube": f"sube {fn(abs(v['pct']))}%" if v["pct"] is not None else "sube",
+                          "baja": f"baja {fn(abs(v['pct']))}%" if v["pct"] is not None else "baja"}[v["trend"]]
+                fuera_rango.append(f"{v['name']} ({cambio})")
+            else:
+                fuera_rango.append(f"{v['name']}")
+        else:
+            # Para valores normales, incluimos el cambio porcentual si hay
+            if v["trend"] and v["trend"] != "igual":
+                cambio = {"igual": "sin cambios", "sube": f"sube {fn(abs(v['pct']))}%" if v["pct"] is not None else "sube",
+                          "baja": f"baja {fn(abs(v['pct']))}%" if v["pct"] is not None else "baja"}[v["trend"]]
+                dentro_rango.append(f"{v['name']} ({cambio})")
+            elif v["trend"] == "igual":
+                dentro_rango.append(f"{v['name']}")
+
+    # Construir el mensaje siguiendo la plantilla solicitada
+    lines = []
+    lines.append("Te ayudo a resumir las diferencias entre el examen actual y el anterior:")
+
+    if fuera_rango:
+        lines.append(f"• Fuera o cerca del rango de referencia: {', '.join(fuera_rango)}.")
+    else:
+        lines.append("• Fuera o cerca del rango de referencia: no hay parámetros fuera del rango de referencia.")
+
+    if dentro_rango:
+        lines.append(f"• Dentro del rango normal: {', '.join(dentro_rango)}.")
+    else:
+        lines.append("• Dentro del rango normal: no hay parámetros dentro del rango normal.")
+
+    lines.append("")
+    lines.append("Esta comparación es solo una referencia de lectura de tus informes. Recuerda compartir estos resultados con tu médico para que los evalúe en tu contexto y te indique los pasos a seguir.")
+
     return "\n".join(lines)
 
 
