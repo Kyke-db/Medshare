@@ -12,6 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from chatbot import make_router as make_chatbot_router
 from citas import init_citas, make_router as make_citas_router
+from examenes import init_examenes, make_router as make_examenes_router
 
 BASE = Path(__file__).parent
 DB = BASE / "medshare.db"
@@ -111,6 +112,8 @@ init()
 app.include_router(make_chatbot_router(current_user, db))
 init_citas(db)
 app.include_router(make_citas_router(current_user, db))
+init_examenes(db)
+app.include_router(make_examenes_router(current_user, db))
 
 
 # ---------- autenticación ----------

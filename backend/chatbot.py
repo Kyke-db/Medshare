@@ -16,6 +16,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
 from citas import free_slots, patient_appointments, pretty
+from examenes import explain_context as exam_context
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:14b")
@@ -34,13 +35,14 @@ Reglas que nunca debes romper:
 - No inventes datos, cifras ni resultados. Si no sabes algo, dilo y sugiere consultar al médico.
 - Puedes mostrar horarios disponibles y las citas registradas del paciente, usando SOLO los datos reales que aparecen más abajo en el contexto. Nunca inventes fechas ni horas. Si el contexto indica que no hay horarios o citas, dilo tal cual.
 - Todavía no puedes reservar ni cancelar citas por el chat. Si el paciente lo pide, muéstrale los horarios disponibles y explica que la reserva se hará con su confirmación en la aplicación.
-- No puedes leer exámenes. Indica que pueden subirlos o revisarlos con su médico.
-- Responde de forma breve: máximo unas 120 palabras.
+- Puedes explicar los resultados de exámenes usando SOLO los datos del contexto (valores, rangos y cambios ya calculados por el sistema). No recalcules ni inventes valores. Explica con palabras simples cada resultado importante: si está dentro, sobre o bajo el rango de referencia y cómo cambió respecto al examen anterior. No digas qué enfermedad tiene el paciente ni qué tratamiento seguir, y termina recordando que solo su médico puede interpretar los resultados. Si el contexto dice que no hay exámenes, invítalo a subir uno.
+- Responde de forma breve: máximo unas 120 palabras (hasta 200 si explicas un examen).
 """
 
 # \b evita falsos positivos como "ahora" (contiene "hora") o "solicita" (contiene "cita")
 RE_HORARIOS = re.compile(r"\b(cita|citas|agendar|agenda|reservar|hora|horas|horario|horarios|disponib\w*)\b", re.I)
 RE_MIS_CITAS = re.compile(r"\b(cancelar|anular|mi cita|mis citas|mis reservas?|mis horas)\b", re.I)
+RE_EXAMEN = re.compile(r"\b(ex[aá]menes|examen|resultados?|laboratorio|creatinina|urea|perfil renal|an[aá]lisis)\b", re.I)
 
 
 class ChatMessage(BaseModel):
@@ -52,8 +54,8 @@ class ChatIn(BaseModel):
     messages: list[ChatMessage] = Field(..., min_length=1, max_length=50)
 
 
-def appointment_context(user, text, db):
-    """Texto con datos reales (horarios/citas) que se agrega al prompt de sistema."""
+def build_context(user, text, db):
+    """Texto con datos reales (horarios, citas, exámenes) que se agrega al prompt de sistema."""
     ctx = f"\nFecha y hora actual: {pretty(datetime.now().strftime('%Y-%m-%d %H:%M'))}."
     if user["role"] != "patient":
         return ctx
@@ -69,6 +71,8 @@ def appointment_context(user, text, db):
             ctx += "\nCitas agendadas del paciente: " + "; ".join(pretty(a["start_at"]) for a in mine) + "."
         else:
             ctx += "\nEl paciente no tiene citas agendadas."
+    if RE_EXAMEN.search(text):
+        ctx += "\n" + exam_context(db, user["id"])
     return ctx
 
 
@@ -86,7 +90,7 @@ def make_router(current_user, db):
         if not history or history[-1]["role"] != "user":
             raise HTTPException(422, "El último mensaje debe ser del usuario")
 
-        system = SYSTEM_PROMPT + appointment_context(user, history[-1]["content"], db)
+        system = SYSTEM_PROMPT + build_context(user, history[-1]["content"], db)
         payload = {
             "model": OLLAMA_MODEL,
             "messages": [{"role": "system", "content": system}, *history],

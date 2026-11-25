@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Bot, Send, X } from "lucide-react";
+import { Bot, Paperclip, Send, X } from "lucide-react";
 import { api } from "./api";
 
 // Asistente con respuestas predefinidas como respaldo (plan de contingencia del RF-04) + IA local (Ollama) + citas
 const RULES = [
   [/diagn|receta|recet|qué tengo|que tengo|dosis/i, "No puedo diagnosticar ni recetar. Si tienes síntomas, consulta a un profesional de la salud lo antes posible."],
-  [/examen|laboratorio|creatinina|urea/i, "Puedes subir una foto o PDF de tu examen y te lo explicaré en lenguaje sencillo. Una creatinina elevada puede indicar que los riñones filtran menos, pero solo tu médico puede interpretarla. (Subida de archivos: próxima versión.)"],
+  [/examen|laboratorio|creatinina|urea/i, "Puedes subir tu examen en PDF con el botón del clip 📎 y te lo explicaré en lenguaje sencillo. Una creatinina elevada puede indicar que los riñones filtran menos, pero solo tu médico puede interpretarla."],
   [/ibuprofeno|naproxeno|ketorolaco|medicament|pastilla|dolor|automedic/i, "⚠️ No te automediques. Ibuprofeno, naproxeno y ketorolaco pueden dañar tus riñones, sobre todo si estás deshidratado. Consulta a tu médico antes de tomarlos."],
   [/hora|cita|agendar|médico|medico/i, "Puedes escribirle a tu médico desde Perfil → Mensajes del médico. Para urgencias, acude al servicio de urgencias más cercano."],
   [/hidrat|agua|beber|líquido|liquido/i, "Mantenerte bien hidratado ayuda a proteger tus riñones. Si tienes vómitos, diarrea o fiebre, avisa a tu médico: pueden requerir ajustes."],
@@ -35,6 +35,19 @@ const fetchSlots = () => {
 };
 const fetchAppointments = () => api("/appointments");
 
+// "2026-11-12" -> "12-11-2026" (sin Date, para que la zona horaria no cambie el día)
+const dmy = (iso) => iso.split("-").reverse().join("-");
+const MAX_PDF = 5 * 1024 * 1024;
+// Subida del PDF: api.js solo envía JSON, así que aquí se usa fetch con FormData
+async function uploadExam(file) {
+  const body = new FormData();
+  body.append("file", file);
+  const res = await fetch("/api/exams", { method: "POST", headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }, body });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(typeof data.detail === "string" ? data.detail : "No pude subir el archivo");
+  return data;
+}
+
 export default function Boberto({ open, onClose }) {
   // Cada mensaje puede traer `slots` (horas para elegir) o `appts` (citas para cancelar).
   // Esas listas solo se muestran bajo el ÚLTIMO mensaje: al escribir o responder algo nuevo desaparecen solas.
@@ -45,6 +58,7 @@ export default function Boberto({ open, onClose }) {
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [booking, setBooking] = useState(false);
   const [cancelling, setCancelling] = useState(null);
+  const fileRef = useRef();
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs, open, typing]);
 
   const send = async (q) => {
@@ -109,6 +123,36 @@ export default function Boberto({ open, onClose }) {
     }
   };
 
+  const onFile = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // permite volver a elegir el mismo archivo
+    if (!file || typing) return;
+    setSelectedSlot(null);
+    setMsgs((m) => [...m, { t: `📎 ${file.name}` }]);
+    if (!/\.pdf$/i.test(file.name) && file.type !== "application/pdf") {
+      setMsgs((m) => [...m, { bot: true, t: "Por ahora solo puedo leer exámenes en formato PDF con texto (no fotos ni escaneos)." }]);
+      return;
+    }
+    if (file.size > MAX_PDF) {
+      setMsgs((m) => [...m, { bot: true, t: "El archivo es muy pesado (máximo 5 MB)." }]);
+      return;
+    }
+    setTyping(true);
+    try {
+      const r = await uploadExam(file);
+      const fuera = r.fuera_de_rango || [];
+      const resumen = fuera.length
+        ? `${fuera.length} están fuera del rango de referencia (${fuera.join(", ")}).`
+        : "todos están dentro del rango de referencia.";
+      setMsgs((m) => [...m, { bot: true, t: `Listo, subí tu ${r.exam_type} del ${dmy(r.taken_at)}. Leí ${r.values.length} resultados y ${resumen} Recuerda que solo tu médico puede interpretarlos.`, chips: ["Explícame mi examen"] }]);
+    } catch (error) {
+      const repetido = error.message.startsWith("Ya subiste");
+      setMsgs((m) => [...m, { bot: true, t: error.message, ...(repetido ? { chips: ["Explícame mi examen"] } : {}) }]);
+    } finally {
+      setTyping(false);
+    }
+  };
+
   if (!open) return null;
   return (
     <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 z-50 sm:w-96 sm:h-[34rem] bg-white sm:rounded-2xl shadow-2xl flex flex-col border border-blue-100 anim-panel">
@@ -152,6 +196,10 @@ export default function Boberto({ open, onClose }) {
                 </div>
               )}
 
+              {last && m.chips?.map((chip) => (
+                <button key={chip} type="button" onClick={() => send(chip)} className="block w-full text-left text-sm card hover:bg-soft anim-up">{chip}</button>
+              ))}
+
               {last && m.appts?.length > 0 && (
                 <div className="space-y-2 rounded-xl border border-red-100 bg-white p-3">
                   <p className="text-xs font-semibold text-slate-600">Tus citas agendadas:</p>
@@ -180,6 +228,8 @@ export default function Boberto({ open, onClose }) {
         <div ref={end} />
       </div>
       <form onSubmit={(e) => { e.preventDefault(); send(); }} className="p-3 flex gap-2 border-t border-blue-100">
+        <input ref={fileRef} type="file" accept="application/pdf,.pdf" className="hidden" onChange={onFile} />
+        <button type="button" onClick={() => fileRef.current?.click()} disabled={typing} className="px-2 text-slate-500 hover:text-brand disabled:opacity-40" aria-label="Subir examen en PDF" title="Subir examen en PDF"><Paperclip size={20} /></button>
         <input className="input" placeholder="Escribe tu mensaje..." value={text} onChange={(e) => setText(e.target.value)} />
         <button className="btn !px-3" aria-label="Enviar"><Send size={18} /></button>
       </form>
